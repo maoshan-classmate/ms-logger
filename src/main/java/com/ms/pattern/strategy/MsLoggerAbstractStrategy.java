@@ -1,16 +1,15 @@
 package com.ms.pattern.strategy;
 
 import com.ms.dto.Logger;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.support.MultipartFilter;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author xuzw
@@ -31,7 +30,7 @@ public abstract class MsLoggerAbstractStrategy {
         return Arrays.stream(args).filter(object -> !(object instanceof MultipartFilter)
                 && !(object instanceof HttpServletRequest)
                 && !(object instanceof HttpServletResponse)
-        ).collect(Collectors.toList());
+        ).toList();
     }
     /**
      * 日志输出
